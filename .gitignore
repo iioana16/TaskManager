@@ -5,3 +5,4 @@ node_modules/
 dist/
 .angular/
 TaskManager.Server/Keys/firebaseApiKey.json
+*.csproj.user
