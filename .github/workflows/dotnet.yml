@@ -26,3 +26,12 @@ jobs:
 
     - name: Test
       run: dotnet test TaskManager.sln --configuration Release --no-build --verbosity normal
+
+    - name: Publish server
+      run: dotnet publish TaskManager.Server/TaskManager.Server.csproj --configuration Release --output publish
+
+    - name: Upload deployment artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: taskmanager-server
+        path: publish
