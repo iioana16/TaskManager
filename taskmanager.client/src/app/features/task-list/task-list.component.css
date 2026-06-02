@@ -1,0 +1,285 @@
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  background: #0f172a;
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+  color: #e5e7eb;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 500px;
+}
+
+.title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 10px 16px;
+  background: #6366f1;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: #4f46e5;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #1e293b;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #1e293b;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+.task-item:hover {
+  background: #273449;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-title.done {
+  text-decoration: line-through;
+  color: #64748b;
+}
+
+.task-desc {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.task-actions button {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.task-actions button:hover {
+  color: white;
+}
+
+.empty {
+  text-align: center;
+  color: #64748b;
+}
+
+/* MODAL */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* GLASS MODAL */
+.modal {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 22px;
+  border-radius: 16px;
+
+  background: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  animation: modalIn 0.18s ease-out;
+}
+
+@keyframes modalIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* TITLE */
+.modal h2 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+/* INPUTS */
+.modal input,
+.modal textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.modal textarea {
+  min-height: 90px;
+  resize: none;
+}
+
+.modal input:focus,
+.modal textarea:focus {
+  border-color: #6366f1;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ACTIONS */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* BUTTON BASE */
+.modal-actions button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+/* CANCEL */
+.cancel {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e5e7eb;
+}
+
+.cancel:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* SAVE */
+.save {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+}
+
+.save:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+}
+
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+  .search-bar input {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #1e293b;
+    color: white;
+  }
+
+    .search-bar input::placeholder {
+      color: #94a3b8;
+    }
+
+.reset-btn {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #334155;
+  color: #e5e7eb;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+  .reset-btn:hover {
+    background: #475569;
+  }
+
+
+.date-label {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.task-badges {
+  margin-top: 8px;
+}
+
+.due-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+  font-size: 12px;
+  font-weight: 500;
+}

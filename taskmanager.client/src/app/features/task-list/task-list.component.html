@@ -1,0 +1,92 @@
+<div class="app">
+  <div class="wrapper">
+
+    <h1 class="title">Tasks</h1>
+
+    <button class="add-btn" (click)="openAddModal()">
+      + New Task
+    </button>
+
+
+    <div class="search-bar">
+
+      <input type="text"
+             placeholder="Search tasks..."
+             [(ngModel)]="searchText"
+             (keyup)="searchTasks()" />
+
+      <button class="reset-btn" (click)="loadTasks()">
+        Reset
+      </button>
+
+    </div>
+
+
+    <!-- List -->
+    <div class="task-list">
+
+      <div *ngFor="let task of tasks" class="task-item">
+
+        <input type="checkbox"
+               class="checkbox"
+               [checked]="task.isCompleted"
+               (change)="toggleComplete(task)" />
+
+        <div class="task-content">
+          <div class="task-title" [class.done]="task.isCompleted">
+            {{ task.title }}
+          </div>
+
+          <div class="task-desc" *ngIf="task.description">
+            {{ task.description }}
+          </div>
+
+          <div class="task-badges">
+            <span class="due-badge" *ngIf="task.dueDate">
+              📅 {{ task.dueDate | date:'dd MMM yyyy' }}
+            </span>
+          </div>
+        </div>
+
+        <div class="task-actions">
+          <button (click)="editTask(task)">✏️</button>
+          <button (click)="deleteTask(task.id!)">🗑️</button>
+        </div>
+
+      </div>
+
+      <div *ngIf="tasks.length === 0" class="empty">
+        No tasks yet 🚀
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" *ngIf="showModal">
+  <div class="modal">
+
+    <h2>{{ isEditing ? 'Edit Task' : 'New Task' }}</h2>
+
+    <input type="text"
+           placeholder="Title"
+           [(ngModel)]="tempTask.title" />
+
+    <textarea placeholder="Description"
+              [(ngModel)]="tempTask.description">
+    </textarea>
+
+
+    <label class="date-label">Due date</label>
+    <input type="date"
+           [(ngModel)]="tempTask.dueDate" />
+
+    <div class="modal-actions">
+      <button class="cancel" (click)="closeModal()">Cancel</button>
+      <button class="save" (click)="saveTask()">Save</button>
+    </div>
+
+  </div>
+</div>
